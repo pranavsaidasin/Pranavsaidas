@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import BgImg from "../assets/bg.png";
 import PropTypes from "prop-types";
 
-const Navbar = ({sidebarOpenstatus, scrollDisable}) => {
+const   Navbar = ({sidebarOpenstatus, scrollDisable}) => {
 
   const navItems = [
     {
@@ -23,7 +23,7 @@ const Navbar = ({sidebarOpenstatus, scrollDisable}) => {
     },
   ];
   return (
-    <nav className="py-7 ">
+    <nav className="py-7  container max-w-custom 2xl:max-w-2xl 4k:max-w-4k mx-auto ">
       <div className="flex  flex-row items-center justify-between text-left  gap-[1.687rem]">
         <div className="text-light-gray 2xl:text-[4.688rem] 4k:text-[5.063rem] text-[1.5rem] sm:text-[1.875rem] font-bold">
           <Link to="/">Pranav Sai Das</Link>
@@ -67,7 +67,7 @@ const Navbar = ({sidebarOpenstatus, scrollDisable}) => {
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="31"
-              height="15"
+              height="32"
               viewBox="0 0 31 15"
               fill="none"
             >
@@ -109,11 +109,11 @@ const Navbar = ({sidebarOpenstatus, scrollDisable}) => {
             backgroundAttachment: "fixed",
             backgroundPosition: "center",
             backgroundSize: "cover",
-            height: "calc(100vh - 94px)",
+            height: "calc(100vh - 88px)",
           }}
-          className="absolute overflow-hidden top-[94px] left-0 right-0 bg-black z-20"
+          className="absolute overflow-hidden top-[88px] left-0 right-0 bg-black !z-40"
         >
-          <div className="bg-overlay absolute flex flex-col items-center justify-center h-full w-full">
+          <div className="bg-overlay  flex flex-col items-center justify-center h-full w-full">
             <div className="flex flex-col items-center gap-3 justify-center">
               {navItems?.map(({ label, to }) => (
                 <div
