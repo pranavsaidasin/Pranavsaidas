@@ -1,9 +1,10 @@
-import React, { useRef } from "react";
+import  { useRef } from "react";
 import { Navbar } from "../../components/Navbar";
 import { useFormik } from "formik";
 import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify";
 import { SocialIcons } from "../../components/socialIcons";
+import PropTypes from "prop-types";
 
 const validate = (values) => {
   const errors = {};
@@ -25,7 +26,7 @@ const validate = (values) => {
   return errors;
 };
 
-export const Contact = () => {
+export const Contact = ({sidebarOpenstatus, scrollDisable}) => {
   const formRef = useRef();
   const formik = useFormik({
     initialValues: {
@@ -55,7 +56,7 @@ export const Contact = () => {
             helper.resetForm();
             formRef.current.reset();
           },
-          (error) => {
+          () => {
             toast("Something Went Wrong, Please Try Again", {
               autoClose: 5000,
               type: "error",
@@ -68,7 +69,7 @@ export const Contact = () => {
   return (
     <>
       <div className="container px-[1.8rem] md:px-[1rem]  4k:max-w-4k  2xl:max-w-2xl max-w-custom mx-auto h-full">
-        <Navbar />
+        <Navbar sidebarOpenstatus={sidebarOpenstatus} scrollDisable={scrollDisable} />
         <div className="max-w-[29.75rem] h-height-lg lg:h-custom 2xl:h-height-high 4k:h-height-4k 2xl:max-w-[96.75rem] px-3 md:px-0 flex flex-col justify-center items-center mx-auto ">
           <h2 className="text-[#D5D5D5] 2xl:text-[5rem] pb-[1rem] text-center font-bold leading-[120%] text-[2rem]">
             Get in touch
@@ -163,3 +164,10 @@ export const Contact = () => {
     </>
   );
 };
+
+
+Contact.propTypes = {
+  sidebarOpenstatus:PropTypes.bool,
+  scrollDisable:PropTypes.any
+ };
+ 
