@@ -6,8 +6,10 @@ import BgImg from "./assets/bg.png";
 import { Contact } from "./pages/Contact/Contact";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useState } from "react";
 
 function App() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <div
@@ -18,18 +20,50 @@ function App() {
         backgroundSize: "cover",
         width: "100vw",
         height: "100vh",
-        overflowY: "scroll",
+        overflowY: sidebarOpen ? "hidden" : "scroll",
         position: "relative",
       }}
     >
       <div className="bg-overlay absolute min-h-screen w-full">
         <ToastContainer />
-            <Routes location={location}>
-              <Route path="/" element={<Home />} />
-              <Route path="/designer" element={<DesignerPortfolio />} />
-              <Route path="/colourist" element={<ColouristPortfolio />} />
-              <Route path="/contact" element={<Contact />} />
-            </Routes>
+        <Routes location={location}>
+          <Route
+            path="/"
+            element={
+              <Home
+                sidebarOpenstatus={sidebarOpen}
+                scrollDisable={setSidebarOpen}
+              />
+            }
+          />
+          <Route
+            path="/designer"
+            element={
+              <DesignerPortfolio
+                sidebarOpenstatus={sidebarOpen}
+                scrollDisable={setSidebarOpen}
+              />
+            }
+          />
+          <Route
+            path="/colourist"
+            element={
+              <ColouristPortfolio
+                sidebarOpenstatus={sidebarOpen}
+                scrollDisable={setSidebarOpen}
+              />
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <Contact
+                sidebarOpenstatus={sidebarOpen}
+                scrollDisable={setSidebarOpen}
+              />
+            }
+          />
+        </Routes>
       </div>
     </div>
   );

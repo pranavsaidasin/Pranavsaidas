@@ -1,9 +1,9 @@
-import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import BgImg from "../assets/bg.png";
+import PropTypes from "prop-types";
 
-const Navbar = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+const Navbar = ({sidebarOpenstatus, scrollDisable}) => {
+
   const navItems = [
     {
       label: "Home",
@@ -44,10 +44,10 @@ const Navbar = () => {
           ))}
         </div>
         <button
-          onClick={() => setSidebarOpen((pre) => !pre)}
+          onClick={() => scrollDisable((pre) => !pre)}
           className="block lg:hidden sm:px-5"
         >
-          {sidebarOpen ? (
+          {sidebarOpenstatus ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="31"
@@ -102,7 +102,7 @@ const Navbar = () => {
           )}
         </button>
       </div>
-      {sidebarOpen && (
+      {sidebarOpenstatus && (
         <div
           style={{
             backgroundImage: `url(${BgImg})`,
@@ -121,7 +121,7 @@ const Navbar = () => {
                   className="rounded-[2.813rem]  flex items-center justify-center  h-[4.75rem] backdrop-blur-md w-[20.75rem] hover:bg-black  bg-white/15 text-[1.438rem] font-bold text-light-gray px-[2rem]"
                 >
                 <Link
-                  onClick={() => setSidebarOpen((pre) => !pre)}
+                  onClick={() => scrollDisable((pre) => !pre)}
                   to={to}
                   className="w-full text-center"
                 >
@@ -137,3 +137,11 @@ const Navbar = () => {
   );
 };
 export { Navbar };
+
+
+
+Navbar.propTypes = {
+  sidebarOpenstatus:PropTypes.bool,
+  scrollDisable:PropTypes.any
+ };
+ 
